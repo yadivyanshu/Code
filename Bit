@@ -10,4 +10,13 @@
         if(one < sec) return {sec, one};
         return {one, sec};
         
-        
+//Bitwise AND of Numbers Range
+//Given two integers left and right that represent the range [left, right], return the bitwise AND of all numbers in this range, inclusive.
+     int rangeBitwiseAnd(int left, int right) {
+        if(!left || !right) return 0;
+        if(left == right) return left;
+        int a = log2(left);
+        int b = log2(right);
+        if(a != b) return 0;
+    }
+
