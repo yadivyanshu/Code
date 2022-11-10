@@ -7,3 +7,14 @@ int lcm(int a, int b){return (a / gcd(a, b)) * b;}
 // ceil value
 int ceilVal(int a,int b){return (a/b)+((a%b)!=0);}
 
+// digit square sum
+  int digitSqSum(int n){
+      int sum = 0;
+      while(n > 0){
+          sum = sum + ((n%10)*(n%10));
+          n=n/10;
+      }
+      return sum;
+  }
+  
+  
