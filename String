@@ -1,8 +1,16 @@
-std::string::find_first_not_of in C++
+//std::string::find_first_not_of in C++
 It searches the string for the first character that does not match any of the characters specified in its arguments
 Return value : Index of first unmatched character when successful or string::npos if no such character found.
     bool check(string &s){
         return s.find_first_not_of("0123456789")==string::npos;
     } //-> means every chars of s is consisted of digits only.
+    
+    
+//Split a sentence into words. words are separated by space
+    istringstream ss(str);
+    string word; 
+    while (ss >> word) {
+        // "word" me ek ek krke sare words aate jayenge.
+    }
     
     
