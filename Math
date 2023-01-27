@@ -17,4 +17,16 @@ int ceilVal(int a,int b){return (a/b)+((a%b)!=0);}
       return sum;
   }
   
-  
+// Sieve
+    bool prime[500001];
+    void SieveOfEratosthenes(){
+      memset(prime, true, sizeof(prime));
+      int n = 500000;
+      for (int p = 2; p * p <= n; p++) {
+          if (prime[p] == true) {
+              for (int i = p * p; i <= n; i += p)
+                  prime[i] = false;
+          }
+      }
+    }
+    
