@@ -13,4 +13,11 @@ Return value : Index of first unmatched character when successful or string::npo
         // "word" me ek ek krke sare words aate jayenge.
     }
     
-    
+ //Parse a comma-separated string
+     vector<string> v;
+     stringstream ss(str);
+     while (ss.good()) {
+        string substr;
+        getline(ss, substr, ',');
+        v.push_back(substr);
+     }
