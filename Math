@@ -74,9 +74,9 @@ int ceilVal(int a,int b){return (a/b)+((a%b)!=0);}
     }
 
 // Area of a rectangle
-    long long area(int bl_x, int bl_y, int tr_x, int tr_y) {
-	long long length = tr_y - bl_y;
-	long long width = tr_x - bl_x;
+    int area(int bl_x, int bl_y, int tr_x, int tr_y) {
+	int length = tr_y - bl_y;
+	int width = tr_x - bl_x;
 	return length * width;
     }
     
