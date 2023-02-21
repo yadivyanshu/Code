@@ -51,6 +51,8 @@ int ceilVal(int a,int b){return (a/b)+((a%b)!=0);}
 	int intersection = max(min(b, d) - max(a, c), 0);  // check if there is common interval
 	int ans = total - intersection;
   
+// Test whether there is any overlap of the two ranges?
+	(StartA <= EndB) and (EndA >= StartB)
 /*---------------------------------------RECTANGLES--------------------------------*/  
 
 // Given 2 rectangles and a obstacle truck. Find the visibility region;
