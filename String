@@ -21,3 +21,6 @@ Return value : Index of first unmatched character when successful or string::npo
         getline(ss, substr, ',');
         v.push_back(substr);
      }
+// vowels 
+vow[26] = {1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0};
+
