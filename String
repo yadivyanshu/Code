@@ -5,6 +5,12 @@ Return value : Index of first unmatched character when successful or string::npo
         return s.find_first_not_of("0123456789")==string::npos;
     } //-> means every chars of s is consisted of digits only.
     
+vortrubac soln: https://leetcode.com/problems/count-collisions-on-a-road/description/
+//will give index 1 & 2 if s = "LRSR";
+    int l = d.find_first_not_of("L"), r = d.find_last_not_of("R"); 
+    return l == string::npos || r == string::npos ? 0 : 
+        count_if(begin(d) + l, begin(d) + r + 1, [](char ch){ return ch != 'S';});
+}    
     
 //Split a sentence into words. words are separated by space
     istringstream ss(str);
