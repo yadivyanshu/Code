@@ -25,3 +25,8 @@ public:
         return n - overlap;
     }
 };
+
+https://stackoverflow.com/questions/23981326/implementation-of-lower-bound-on-vector-pairs
+sort(v.begin(),v.end());
+auto id = distance(v.begin(), lower_bound(v.begin(),v.end(), 
+       make_pair(5, numeric_limits<int>::min())) );
