@@ -1,57 +1,68 @@
 //Trie implementation for insertion, string search 
 
-struct Node{
-    Node* child[26];
-    bool flag;
+struct TrieNode{
+    TrieNode *children[26];
+    bool flag = false;
     
-    Node(){
-        flag = false;
-        for(int i = 0 ; i < 26 ; i++) child[i] = NULL;
+    bool containsKey(char ch){
+        return (children[ch - 'a'] != NULL);
     }
+    
+    void put(char ch, TrieNode* node){
+        children[ch - 'a'] = node;
+    }
+    
+    TrieNode* get(char ch){
+        return children[ch - 'a'];
+    }
+    
+    void setEnd() {
+		flag = true;
+	}
+    
+	bool isEnd() {
+		return flag;
+	}
+    
 };
 
+
 class Trie {
-    Node * root;
+    TrieNode* root;
 public:
     Trie() {
-        root = new Node();
+        root = new TrieNode();
     }
     
     void insert(string word) {
-        Node* curr = root;
-        int k = 0;
-        for(auto it: word){
-            k = it - 'a';
-            if(!curr->child[k]){
-                curr->child[k] = new Node();
-            }
-            curr = curr->child[k];
+        TrieNode* curr = root;
+        for(auto it : word){
+            if(!curr->containsKey(it)) curr->put(it, new TrieNode());
+            curr = curr->get(it);
         }
-        curr->flag = true;
+        curr->setEnd();
     }
     
     bool search(string word) {
-        Node* curr = root;
-        int k = 0;
+        TrieNode* curr = root;
         for(auto it: word){
-            k = it - 'a';
-            if(!curr->child[k]) return false;
-            curr = curr->child[k];
+            if(!curr->containsKey(it)) return false;
+            curr = curr->get(it);
         }
-        return curr->flag;
+        return curr->isEnd();
     }
     
     bool startsWith(string prefix) {
-        Node* curr = root;
-        int k = 0;
+        TrieNode* curr = root;
         for(auto it: prefix){
-            k = it - 'a';
-            if(!curr->child[k]) return false;
-            curr = curr->child[k];
+            if(!curr->containsKey(it)) return false;
+            curr = curr->get(it);
         }
         return true;
     }
 };
+
+
 
 
 
