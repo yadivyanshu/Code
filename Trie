@@ -161,3 +161,51 @@ Node* root;
         return curr->deleteEnd();
     }
 };
+
+
+//Bolier plate code for Trie with Bit Manipulation
+
+struct Node{
+    Node* child[2];
+    int cnt[2];
+    
+    bool containsKey(int bit){
+        return child[bit] != NULL;
+    }
+    
+    void put(int bit, Node* node){
+        child[bit] = node;
+    }
+    
+    Node* get(int bit){
+        return child[bit];
+    }
+};
+
+class Trie{
+  Node* root;
+  public :
+    Trie(){
+        root = new Node();
+    }
+    
+    void insert(int num){
+        Node* curr = root;
+        for(int i = 31 ; i >= 0 ; i--){
+            int bit = (num >> i) & 1;
+            if(!curr->containsKey(bit)) curr->put(bit, new Node());
+            curr->cnt[bit]++;
+            curr = curr->get(bit);
+        }
+    }
+    
+    void del(int num){
+        Node* curr = root;
+        for(int i = 31 ; i >= 0 ; i--){
+            int bit = (num >> i) & 1;
+            curr->cnt[bit]--;
+            curr = curr->get(bit);
+        }
+    }
+};
+
