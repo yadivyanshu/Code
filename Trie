@@ -163,7 +163,7 @@ Node* root;
 };
 
 
-//Bolier plate code for Trie with Bit Manipulation
+//Boiler plate code for Trie with Bit Manipulation
 
 struct Node{
     Node* child[2];
