@@ -162,6 +162,65 @@ Node* root;
     }
 };
 
+//Bolier Plate code to stor digits and to sort them in lexicograpical order
+
+struct Node{
+    bool flag = false;
+    Node* child[10];
+    
+    bool containsKey(char ch){
+        return (child[ch - '0'] != NULL);
+    }
+    
+    void put(char ch, Node* node){
+        child[ch - '0'] = node;
+    }
+    
+    Node* get(char ch){
+        return child[ch - '0'];
+    }
+    
+    void setEnd(){
+        flag = true;
+    }
+    
+    bool isEnd(){
+        return flag;
+    }
+};
+
+class Trie{
+    public:
+    
+    Node* root;
+    Trie(){
+        root = new Node();   
+    }
+    
+    void insert(const string &s){
+        Node* curr = root;
+        for(auto it: s){
+            if(!curr->containsKey(it)) curr->put(it, new Node());
+            curr = curr->get(it);
+        }
+        curr->setEnd();
+    }
+
+	
+    //sort digits in lexicoghraphical orders
+    void solve(string s, Node* curr, vector<int> &ans){
+        if(curr->isEnd()) ans.push_back(stoi(s));
+        
+        for(int i = 0 ; i <= 9 ; i++){
+            if(curr->containsKey(i + '0')){
+                s += i + '0';
+                solve(s, curr->get(i + '0'), ans);
+                s.pop_back();
+            }
+        }
+    }
+};
+
 
 //Boiler plate code for Trie with Bit Manipulation
 
