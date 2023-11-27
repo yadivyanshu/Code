@@ -62,10 +62,6 @@ public:
     }
 };
 
-
-
-
-
 // Trie implementation for prefix starts, freq of string and delete
 
 #include <bits/stdc++.h> 
@@ -267,4 +263,3 @@ class Trie{
         }
     }
 };
-
