@@ -142,3 +142,53 @@ public:
 
 // Count of Elements which are smaller/greater :-  https://codeforces.com/contest/61/submission/227454595
 
+// Merge Sort Tree - number of elements greater than k in the subsequence - https://www.spoj.com/problems/KQUERY/
+#define vi vector<int>
+#define input(i,n,a) for(int i=0;i<n;i++)cin>>a[i];
+class SGTree{
+    vector<vi> seg;
+    public:
+    SGTree(int n) {
+        seg.resize(4*n+1);
+    }
+    
+    void build(int ind, int l, int r, vi &a) {
+        if(l == r) {
+            seg[ind].resize(1, a[l]);
+            return;
+        }
+        
+        int mid = l + (r - l) / 2, lind = ind << 1, rind = lind | 1;
+        build(lind, l, mid, a);
+        build(rind, mid+1, r, a);
+        
+        int len = seg[lind].size() + seg[rind].size();
+        seg[ind].resize(len);
+        merge(begin(seg[lind]), end(seg[lind]), begin(seg[rind]), end(seg[rind]), begin(seg[ind]));
+        
+    }
+    
+    int query(int ind, int l, int r, int a, int b, int k) {
+        if(l > b || r < a || l > r) return 0;
+        if(l >= a && r <= b) {
+            int len = seg[ind].size();
+            return len - (upper_bound(begin(seg[ind]), end(seg[ind]), k) - begin(seg[ind]));
+        }
+        
+        int mid = l + (r - l) / 2, lind = ind << 1, rind = lind | 1;
+        return query(lind, l, mid, a, b, k) + query(rind, mid+1, r, a, b, k);
+    }
+};
+
+void solve(){
+    int n;cin>>n;
+    vi a(n);
+    input(i, n, a);
+    int q;cin>>q;
+    SGTree obj(n);
+    obj.build(1, 0, n-1, a);
+    while(q--) {
+        int i, j, k;cin>>i>>j>>k;
+        cout<<obj.query(1, 0, n-1, i-1, j-1, k)<<endl;
+    }
+}
