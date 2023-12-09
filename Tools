@@ -30,3 +30,8 @@ https://stackoverflow.com/questions/23981326/implementation-of-lower-bound-on-ve
 sort(v.begin(),v.end());
 auto id = distance(v.begin(), lower_bound(v.begin(),v.end(), 
        make_pair(5, numeric_limits<int>::min())) );
+
+-> In C++, cin.get() is a function used to extract a single character from the input stream. The expression cin.get() == 10 checks if the character obtained from cin.get() is equal to the ASCII value 10, which represents the newline character ('\n').
+
+So, this expression is checking if the character input from the user is a newline character. If the user presses the "Enter" key, which generates a newline character in most cases, this condition will evaluate to true.
+Reference: https://codeforces.com/contest/52/submission/205192054
