@@ -30,6 +30,7 @@
             pq.pop();
             int node = it.second;
             int wt = it.first;
+            if(dist[node] < wt)continue; // tle w/o it
             for(auto vec : adj[node]) {
                 if(dist[vec[0]] > dist[node] + vec[1]) {
                     dist[vec[0]] = dist[node] + vec[1];
