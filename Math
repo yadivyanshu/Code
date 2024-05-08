@@ -74,6 +74,7 @@ int ceilVal(int a,int b){return (a/b)+((a%b)!=0);}
 		}
 	    }
 	}
+     -> the number of factors of K will not be above 2*sqrt(K).
 
 //   Compute nCr % p using Fermat Little Theorem -------------->
 	static const int N = 1e5 + 5;
